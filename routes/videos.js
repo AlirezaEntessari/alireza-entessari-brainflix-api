@@ -21,9 +21,7 @@ router.get('/:videoId', (req, res) => {
     })
 
     console.log(individualVideo);
-    // console.log(videoId);
     console.log(parsedVideos);
-    // console.log(req.params);
 
     if(!individualVideo){
         res.status(404).send("Video not found");
@@ -32,16 +30,13 @@ router.get('/:videoId', (req, res) => {
     res.json(individualVideo);
 })
 
-//POST an album
-//function to read albums file
 const readVideos = () => {
-    //read the JSON file containing albums data
     const videosFile = fs.readFileSync("./data/videos.json");
     const videos = JSON.parse(videosFile);
     return videos;
   };
 
-//function to write to albums file
+
 const writeVideos = (data) => {
     const stringifiedData = JSON.stringify(data);
     fs.writeFileSync("./data/videos.json", stringifiedData);
